@@ -8,7 +8,7 @@ import { emitShowToastGlobalEvent } from 'events/global';
 import { loginService, getUserService } from 'services';
 
 type LoginParams = {
-  username: string;
+  phone: string;
   password: string;
 };
 
@@ -76,7 +76,7 @@ function useAuth(initialState?: AuthState | null): UseAuth {
 
   const loginAction = useCallback(
     async (loginInfo: LoginParams): Promise<boolean> => {
-      const { status, message, data } = await loginService(loginInfo.username, loginInfo.password);
+      const { status, message, data } = await loginService(loginInfo.phone, loginInfo.password);
 
       if (!status) {
         emitShowToastGlobalEvent(message);
@@ -86,8 +86,6 @@ function useAuth(initialState?: AuthState | null): UseAuth {
         emitShowToastGlobalEvent('token not found!');
         return false;
       }
-
-      TokenStorage.set(data.token);
       updateAuthState((state) => {
         state.token = data.token;
         state.userData = data.user;

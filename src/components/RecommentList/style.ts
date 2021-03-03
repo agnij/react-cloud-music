@@ -6,7 +6,7 @@ const StyledRecommentList = styled.div`
     font-weight: 700;
     padding-left: 6px;
     font-size: 14px;
-    line-height: 60px;
+    line-height: 40px;
     color: ${({ theme }) => theme.fontColor};
   }
 `;
@@ -37,14 +37,14 @@ const ImgWrapper = styled.div`
   }
 `;
 
-/* 给图片上的图标和文字提供一个遮罩，因为在字体颜色是白色，在面对白色图片背景的时候，文字会看不清或者看不到，因此提供一个阴影来衬托出文字 */
+/* 给图片上的图标和文字提供一个遮罩，因为在字体颜色是白色，在面对白色图片背景的时候，文字会看不清或者看不到，因此提供一个阴影来衬托出文字 background: linear-gradient (hsla (0, 0%, 43%, 0.4), hsla (0, 0%, 100%, 0));*/
 const Decorate = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
   height: 35px;
   border-radius: 3px;
-  background: linear-gradient (hsla (0, 0%, 43%, 0.4), hsla (0, 0%, 100%, 0));
+  background: rgba(0,0,0,0.43);
 `;
 
 const PlayCount = styled.div`

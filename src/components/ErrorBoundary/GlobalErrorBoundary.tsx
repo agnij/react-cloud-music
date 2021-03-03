@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IS_DEV } from 'config';
-
+// woqidao yongyou yishengdemeiliqiwang 
 import StyledGlobalErrorBoundary, { Inner, Button, Code } from './style';
 import { netErrorImg } from './icon';
 

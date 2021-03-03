@@ -10,7 +10,6 @@ interface GuestRouteProps extends RouteProps {
 /** 必须未登录才可访问 */
 function GuestRoute({ homeRoutePath, children, ...rest }: GuestRouteProps) {
   const { unLogin } = AuthContainer.useContainer();
-
   return <Route {...rest} render={() => (unLogin ? children : <Redirect to={{ pathname: homeRoutePath }} />)} />;
 }
 

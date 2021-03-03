@@ -33,11 +33,11 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
             <Marquee>{children}</Marquee>
           </h1>
         ) : (
-          <h1>{children}</h1>
-        )}
+            <h1>{children}</h1>
+          )}
       </StyledHeader>
     );
-  },
+  }
 );
 
 export default React.memo(Header);

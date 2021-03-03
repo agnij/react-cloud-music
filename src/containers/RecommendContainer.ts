@@ -2,11 +2,12 @@ import { useMemo, useCallback } from 'react';
 import { createContainer } from 'unstated-next';
 import { useImmer } from 'use-immer';
 
-import { getBannerService, getRecommendListService } from 'services';
+import { getBannerService, getRecommendListService, getDjprogramListService } from 'services';
 
 export interface RecommendState {
   bannerList: Data.BannerListItem[];
   recommendList: Data.RecommendListItem[];
+  djprogramList: Data.DjprogramListItem[];
   loading: boolean;
 }
 
@@ -17,6 +18,7 @@ export interface RecommendComputedState {
 interface RecommendActions {
   getBannerList(): Promise<void>;
   getRecommendList(): Promise<void>;
+  getDjprogramList(): Promise<void>;
 }
 
 type UseRecommend = RecommendState & RecommendComputedState & RecommendActions;
@@ -26,6 +28,7 @@ function useRecommend(): UseRecommend {
     loading: true,
     bannerList: [],
     recommendList: [],
+    djprogramList: []
   });
 
   const bannerImages = useMemo(() => {
@@ -64,7 +67,19 @@ function useRecommend(): UseRecommend {
     }
   }, [updateRecommendState]);
 
-  return { ...recommendState, bannerImages, getBannerList, getRecommendList };
+  const getDjprogramList = useCallback(async () => {
+    try {
+      const result = await getDjprogramListService();
+      updateRecommendState((state) => {
+        state.loading = false;
+        state.djprogramList = result;
+      });
+    } catch (err) {
+      
+    }
+  }, [updateRecommendState])
+
+  return { ...recommendState, bannerImages, getBannerList, getRecommendList, getDjprogramList };
 }
 
 const RecommendContainer = createContainer(useRecommend);

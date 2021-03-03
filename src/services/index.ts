@@ -2,13 +2,13 @@ import { commonHttpClient as client } from './common-http-client';
 
 /** 登录 */
 export async function loginService(
-  username: string,
+  phone: string,
   password: string,
 ): Promise<Response.CommonApiResponse<Response.Login>> {
   const result = await client.post({
-    url: '/login',
-    mock: true,
-    data: { username, password },
+    url: '/login/cellphone',
+    // mock: true,
+    params: { phone, password },
   });
 
   return result;
@@ -18,7 +18,7 @@ export async function loginService(
 export async function getUserService(): Promise<Response.CommonApiResponse<Data.UserData | null>> {
   const result = await client.get({
     url: '/get-user',
-    mock: true,
+    mock: true
   });
 
   return result;
@@ -37,6 +37,15 @@ export async function getBannerService(): Promise<Data.BannerListItem[]> {
 export async function getRecommendListService(): Promise<Data.RecommendListItem[]> {
   const result = await client.get({
     url: '/personalized',
+  });
+
+  return result.data?.result || [];
+}
+
+/** 获取推荐电台 */
+export async function getDjprogramListService(): Promise<Data.DjprogramListItem[]> {
+  const result = await client.get({
+    url: '/personalized/djprogram',
   });
 
   return result.data?.result || [];
@@ -133,7 +142,7 @@ export async function getSuggestListService(query: string): Promise<Data.Suggest
   return result.data?.result || null;
 }
 
-/** 关键字获取歌曲列表 */
+/** 关键字获取歌曲列表 列表*/
 export async function getResultSongsListService(query: string): Promise<Data.SongListItem[]> {
   const result = await client.get({
     url: '/search',
@@ -151,7 +160,7 @@ export async function getSongDetailRequestService(...ids: number[]): Promise<Dat
     url: '/song/detail',
     params: {
       ids: ids.join(','),
-    },
+    }
   });
 
   return result.data?.songs || [];
@@ -161,8 +170,8 @@ export async function getSongDetailRequestService(...ids: number[]): Promise<Dat
 export async function getLyricService(id: number): Promise<any> {
   const result = await client.get({
     url: '/lyric',
-    params: { id },
-  });
+    params: { id }
+  })
 
   return result;
 }

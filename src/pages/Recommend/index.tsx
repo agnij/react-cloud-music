@@ -12,6 +12,7 @@ import { Loading } from 'components/Loading';
 
 import StyledRecommend from './style';
 import RecommentList from 'components/RecommentList';
+import DjprogramList from 'components/DjprogramList'
 
 interface RecommendProps {
   children?: React.ReactNode;
@@ -23,8 +24,10 @@ function Recommend({ children }: RecommendProps) {
     bannerImages,
     bannerList,
     recommendList,
+    djprogramList,
     getBannerList,
     getRecommendList,
+    getDjprogramList
   } = RecommendContainer.useContainer();
   useListenThemeChange();
   const history = useHistory();
@@ -39,6 +42,7 @@ function Recommend({ children }: RecommendProps) {
   useMount(() => {
     if (!bannerList.length) getBannerList();
     if (!recommendList.length) getRecommendList();
+    if (!djprogramList.length) getDjprogramList();
   });
 
   return (
@@ -46,7 +50,8 @@ function Recommend({ children }: RecommendProps) {
       <Scroll onScroll={forceCheck}>
         <div>
           <Slider imgs={bannerImages} />
-          <RecommentList list={recommendList} onItemClick={goDetail} />
+          <RecommentList list={recommendList} onItemClick={goDetail}/>
+          <DjprogramList DjList={djprogramList}/>
         </div>
       </Scroll>
 

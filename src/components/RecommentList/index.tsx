@@ -9,13 +9,16 @@ interface RecommentListProps {
   list: Data.RecommendListItem[];
   onItemClick?: (item: Data.RecommendListItem) => void;
 }
+interface DjprogramProps {
+  DjList: Data.DjprogramListItem[];
+}
 
-function RecommentList({ list, onItemClick }: RecommentListProps) {
+function RecommentList({ list, onItemClick }: RecommentListProps ) {
   return (
     <StyledRecommentList>
       <h1>推荐歌单</h1>
       <List>
-        {list.map((item) => {
+        {list.slice(0, 3).map((item) => {
           return (
             <ListItem key={item.id} onClick={() => onItemClick && onItemClick(item)}>
               <ImgWrapper>
@@ -27,8 +30,8 @@ function RecommentList({ list, onItemClick }: RecommentListProps) {
                   <i className="iconfont ">&#xe885;</i>
                   <span>{getCount(item.playCount)}</span>
                 </PlayCount>
-                <Desc>{item.name}</Desc>
               </ImgWrapper>
+              <Desc>{item.name}</Desc>
             </ListItem>
           );
         })}

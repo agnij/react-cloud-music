@@ -148,6 +148,7 @@ function useSingers(): UseSingers {
         state.pullUpLoading = false;
         state.listOffset = newList.length;
       });
+      
     },
     [singersState.listOffset, updateSingersState],
   );

@@ -25,7 +25,7 @@ function Album() {
   const subPageRef = useRef<SubPageHandlers>(null);
   const musicNoteRef = useRef<MusicNoteHandlers | null>(null);
   const [title, setTitle] = useState('歌单');
-  const [isMarquee, setIsMarquee] = useState(false); // title 是否为跑马灯
+  const [isMarquee, setIsMarquee] = useState(false); // title 是否为跑马灯 
 
   const { loading, data: albumData } = useRequest(() => getAlbumDetailService(Number(id)), {
     loadingDelay: 300,

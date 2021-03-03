@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 
 import { RecommondRoutePath, SingersRoutePath, RankRoutePath, SearchRoutePath } from 'constants/router';
@@ -15,22 +15,24 @@ interface HomeLayoutProps {
 function HomeLayout({ children }: HomeLayoutProps) {
   const history = useHistory();
   const [showDrawer, setShowDrawer] = useState(false);
+  useEffect(() => {
+    console.log(showDrawer) // dx1 
+  }, [showDrawer])
 
   return (
     <StyledHome>
-      <Drawer width={250} show={showDrawer} onClose={() => setShowDrawer(false)}>
+      <Drawer width={250} show={showDrawer} onClose={() => { setShowDrawer(true); }}>
         <DrawerContent
           closeDrawer={() => {
-            setShowDrawer(false);
+            setShowDrawer(() => { return false });
           }}
         />
       </Drawer>
-
       <Top>
-        <span className="iconfont menu" onClick={() => setShowDrawer(true)}>
+        <span className="iconfont menu" onClick={() => setShowDrawer(() => { return true })}>
           &#xe65c;
         </span>
-        <span className="title">云音乐</span>
+        <span className="title"></span>
         <span className="iconfont search" onClick={() => history.push(SearchRoutePath.Root)}>
           &#xe62b;
         </span>
@@ -52,10 +54,9 @@ function HomeLayout({ children }: HomeLayoutProps) {
           </TabItem>
         </NavLink>
       </Tab>
-      {children}
-
+      { children}
       <Player />
-    </StyledHome>
+    </StyledHome >
   );
 }
 

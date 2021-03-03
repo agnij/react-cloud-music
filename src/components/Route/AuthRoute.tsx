@@ -23,13 +23,13 @@ function AuthRoute({ noAuthRoutePath, children, ...rest }: AuthRouteProps) {
         logged ? (
           children
         ) : (
-          <Redirect
-            to={{
-              pathname: noAuthRoutePath,
-              state: { from: location },
-            }}
-          />
-        )
+            <Redirect
+              to={{
+                pathname: noAuthRoutePath,
+                state: { from: location },
+              }}
+            />
+          )
       }
     />
   );

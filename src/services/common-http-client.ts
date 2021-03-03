@@ -43,8 +43,8 @@ export const commonHttpClient = new HTTPClient<CommonRequestConfig, Response.Com
   },
   // 错误处理
   (requestConfig, err) => {
-    console.error(err);
-    const errMsg = '网络连接异常，请稍后重试';
+    // const errMsg = '网络连接异常，请稍后重试';
+    const errMsg = err.msg;
 
     if (!requestConfig || !requestConfig.hideGlobalErrorToast) {
       emitShowToastGlobalEvent(errMsg);
@@ -70,7 +70,6 @@ export const commonHttpClient = new HTTPClient<CommonRequestConfig, Response.Com
     if (requestConfig.mock) {
       requestConfig.getMockData = getMockData;
     }
-
     return requestConfig;
   },
 );

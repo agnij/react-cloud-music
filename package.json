@@ -24,7 +24,8 @@
     "api:prod:restart": "pm2 restart cloud-music-api",
     "api:prod:status": "pm2 describe cloud-music-api",
     "pm2:monit": "pm2 monit",
-    "git:commit": "git-cz"
+    "git:commit": "git-cz",
+    "start-qq": "react-scripts start"
   },
   "dependencies": {
     "@types/qs": "^6.9.4",

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import { ThemeState, ThemeProvider } from 'containers/ThemeContainer';
 import AuthContainer, { AuthState } from 'containers/AuthContainer';
@@ -13,7 +13,7 @@ interface InitState {
   theme: ThemeState;
   auth: AuthState;
 }
-/** 尝试从 window 上获取基础数据 */
+/** 尝试从 window 上获取基础数据 dinghui weijunheersheng*/
 function getWindowBaseData(): InitState | null {
   const baseDataString = (window as any).__BASE_DATA__ || '';
   if (!baseDataString) return null;
@@ -27,7 +27,7 @@ function getWindowBaseData(): InitState | null {
     return null;
   }
 }
-
+// defult data deal
 function getDefaultInitData(): InitState {
   return {
     theme: {
@@ -54,10 +54,10 @@ function App() {
           {/* 全局样式 */}
           <StyledGlobal />
           <StyledIconFont />
-          {/* 路由 */}
-          <Router>
+          {/* 路由 luyou*/}
+          <HashRouter>
             <RootRoutes />
-          </Router>
+          </HashRouter>
         </AuthContainer.Provider>
       </ThemeProvider>
     </GlobalErrorBoundary>

@@ -29,6 +29,7 @@ export class HTTPClient<Req extends RequestConfig = RequestConfig, Resp = any> {
     private errorResolve: (requestConfig?: Req | null, err?: any) => Resp,
     // 请求参数处理
     private requestResolve?: (requestConfig: Req) => Req,
+    private BaiJieShaBi?: (RequestConfig: Req) => Req
   ) {
     this.baseURL = options.baseURL;
     this.axiosInstance = Axios.create(options);
@@ -40,20 +41,22 @@ export class HTTPClient<Req extends RequestConfig = RequestConfig, Resp = any> {
       (error: any) => {
         return {
           resolved: true,
-          result: this.errorResolve(null, error),
+          result: this.errorResolve(null, error.response.data),
         } as ErrorResp<Resp>;
       },
     );
 
     this.axiosInstance.interceptors.response.use(
       (response: any) => {
+        console.log(response)
         return response;
       },
       (error: any) => {
+        console.log(error.response)
         return {
           resolved: true,
-          result: this.errorResolve(null, error),
-        } as ErrorResp<Resp>;
+          result: this.errorResolve(null, error.response.data),
+        } as ErrorResp<Resp>; 
       },
     );
   }

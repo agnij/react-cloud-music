@@ -401,5 +401,5 @@ const data = [
 ];
 
 export const Default = () => {
-  return <RecommentList list={data} onItemClick={(item) => alert(item.id)} />;
+  return <RecommentList list={data} onItemClick={(item: { id: any; }) => alert(item.id)} />;
 };

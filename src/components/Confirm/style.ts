@@ -47,6 +47,10 @@ const StyledConfirm = styled.div<StyledConfirmProps>`
     }
   }
 
+  & class {
+    animation: 0.7s;
+  }
+
   > div {
     position: absolute;
     top: 50%;

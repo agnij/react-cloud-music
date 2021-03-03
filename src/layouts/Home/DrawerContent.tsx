@@ -36,17 +36,17 @@ function DrawerContent({ closeDrawer }: DrawerContentProps) {
           </button>
         </>
       ) : (
-        <button
-          type="button"
-          onClick={() => {
-            closeDrawer && closeDrawer();
-            setTimeout(() => {
-              history.push(SpecialRoutePath.Login);
-            }, 300);
-          }}>
-          登录
-        </button>
-      )}
+          <button
+            type="button"
+            onClick={() => {
+              closeDrawer && closeDrawer();
+              setTimeout(() => {
+                history.push(SpecialRoutePath.Login);
+              }, 300);
+            }}>
+            登录
+          </button>
+        )}
     </div>
   );
 }

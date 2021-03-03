@@ -76,5 +76,4 @@ function HotKeyList({ historyList, show = true, list, onItemClick, onDeleteHisto
     </ShortcutWrapper>
   );
 }
-
 export default React.memo(HotKeyList);

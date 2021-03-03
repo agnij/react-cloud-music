@@ -1,7 +1,6 @@
-/** 推荐页的 path */
+/** 推荐页的 path*/
 export class RecommondRoutePath {
-  public static Root = '/recommend';
-
+  public static Root = '/recommond';  //  /recommond
   public static Detail = `${RecommondRoutePath.Root}/:id`;
   public static buildDetailPath(id: number): string {
     return this.Detail.replace(':id', String(id));
@@ -41,7 +40,7 @@ export class AlbumRoutePath {
   }
 }
 
-/** 特殊页面的 path */
+/** 特殊页面的 path*/
 export class SpecialRoutePath {
   public static Root = '/';
   public static Login = '/login';

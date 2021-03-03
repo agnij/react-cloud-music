@@ -215,7 +215,7 @@ const StyledLogin = styled.div`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-  flex: 2;
+  flex: 1;
   > div {
     width: 100px;
     height: 100px;
@@ -272,18 +272,48 @@ const LogoImg = styled.img.attrs({
 const Button = styled.div`
   background: #fff;
   color: #e82101;
-  height: 50px;
-  line-height: 50px;
+  height: 40px;
+  line-height: 40px;
   font-size: 18px;
-  width: 70%;
+  width: 55%;
   display: flex;
   justify-content: center;
   border-radius: 27px;
   align-items: center;
   border: 1px solid #fff;
-  margin-bottom: 20px;
+  margin: 20px 0;
   cursor: pointer;
 `;
+
+const ButtonMin = styled.div`
+  background: #fff;
+  color: #e82101;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 27px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  width: auto;
+  font-size: 12px;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+`
+
+const Input = styled.input`
+  list-style: none;
+  border: none;
+  width: 50%;
+  background: none;
+  margin: 0 0 10px;
+  color: #fff;
+  display: inline-block;
+  height: 30px;
+  ::-webkit-input-placeholder{
+      color:#FFF;
+  }
+`
+
 
 const FormWrapper = styled.div`
   display: flex;
@@ -293,7 +323,7 @@ const FormWrapper = styled.div`
   align-items: center;
   color: #fff;
 
-  .shake-anim {
+  .shake-admin {
     animation-name: ${shakeHorizontal};
     animation-duration: 400ms;
     animation-timing-function: ease-in-out;
@@ -304,4 +334,4 @@ const FormWrapper = styled.div`
 
 export default StyledLogin;
 
-export { LogoContainer, LogoImg, Button, FormWrapper };
+export { LogoContainer, LogoImg, Button, FormWrapper, Input, ButtonMin };

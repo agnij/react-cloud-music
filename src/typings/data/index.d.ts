@@ -24,6 +24,13 @@ declare namespace Data {
     name: string;
   }
 
+  /** 推荐电台 item */
+  export interface DjprogramListItem {
+    id: number;
+    picUrl: string;
+    name: string;
+  }
+
   /** Horizen item */
   export interface HorizenItem {
     key: string;
